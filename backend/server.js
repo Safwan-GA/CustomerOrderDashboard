@@ -7,6 +7,8 @@ import mongoose from 'mongoose';
 import Orders from "./models/Orders.js";
 import Users from './models/Users.js';
 
+import userRoutes from './routes/user.js'
+
 // export const getTheNumberOfRecordsinOrder=async(req,res)=>{
     
 // }
@@ -27,15 +29,16 @@ const startServer = async () => {
   app.get('/', (req, res) => {
     res.send("Backend has started");
   });
+  app.use('/',userRoutes)
 
 
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => console.log(`Server up on ${PORT}`));
   console.log("getting the result from the database")
-  const result=await Orders.find({})
-  console.log(result.length)
-  const user=await Users.find({})
-  console.log(user.length)
+//   const result=await Orders.find({})
+//   console.log(result.length)
+//   const user=await Users.find({})
+//   console.log(user.length)
 
 //   getTheNumberOfRecordsInUser();
 //   getTheNumberOfRecordsinOrder();

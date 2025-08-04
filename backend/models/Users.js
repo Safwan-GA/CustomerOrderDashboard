@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
+import { ref } from "process";
 
 const { Schema, model, Types } = mongoose;
 
 const userSchema=mongoose.Schema({
-    id: {type:Number, required:true, unique:true},	
+    id: {type:Number, required:true, unique:true, ref:'Orders'},	
     first_name:{type:String, required:true},
     last_name: {type:String, required:true},
     email:{type:String, required:true},
